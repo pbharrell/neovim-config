@@ -48,5 +48,12 @@ return require('packer').startup(function(use)
     "folke/which-key.nvim",
   })
 
+  use {
+    "max397574/better-escape.nvim",
+    config = function()
+      require("better_escape").setup()
+    end,
+  }
+
 end)
 

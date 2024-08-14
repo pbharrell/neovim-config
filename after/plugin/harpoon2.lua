@@ -30,7 +30,7 @@ vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end,
 -- vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
 wk.register({
   -- The key you press
-  a = { function() require("harpoon"):list():add() end, "harpoon add" },
+  { "<leader>a", function() require("harpoon"):list():add() end, desc = "harpoon add" },
 }, { prefix = "<leader>" })
 
 vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)

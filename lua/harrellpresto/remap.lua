@@ -39,6 +39,9 @@ vim.keymap.set("n", "<leader>so", ":source<CR>")
 vim.keymap.set({'n', 'x'}, 'x', '"_x')
 vim.keymap.set({'n', 'x'}, 'X', '"_d')
 
+vim.keymap.set({'n'}, '<leader>h', '<C-w>h')
+vim.keymap.set({'n'}, '<leader>l', '<C-w>l')
+
 -- `k` would be the second key of a mapping
 -- vim.keymap.set("i", "jk", "<esc>")
 k = function()

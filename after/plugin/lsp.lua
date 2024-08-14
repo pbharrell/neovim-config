@@ -1,9 +1,13 @@
 local lsp = require("lsp-zero")
+local lspconfig = require("lspconfig")
 
 lsp.on_attach(function(client, bufnr)
   -- see :help lsp-zero-keybindings
   -- to learn the available actions
-  lsp.default_keymaps({buffer = bufnr})
+  lsp.default_keymaps({
+    buffer = bufnr,
+    preserve_mappings = false,
+  })
 end)
 
 -- to learn how to use mason.nvim
@@ -17,9 +21,31 @@ require('mason-lspconfig').setup({
     },
   handlers = {
     function(server_name)
-      require('lspconfig')[server_name].setup({})
+      lspconfig[server_name].setup({})
     end,
   },
 })
+
+root_dir = require('lspconfig.util').root_pattern(".git", "compile_commands.json", ".clangd")
+
+require('lspconfig').clangd.setup{
+    -- The default settings for `clangd` in Neovim
+    cmd = { "clangd", "--background-index", "--compile-commands-dir=build" },
+    filetypes = { "c", "cpp", "objc", "objcpp" },
+    root_dir = require('lspconfig.util').root_pattern(".git", "compile_commands.json"),
+    single_file_support = true,
+
+    -- Additional clangd settings (if needed)
+    settings = {
+        clangd = {
+            -- Enable clangd to index all files in the directory
+            fallbackFlags = { "-std=c++17" },
+            completion = {
+                enableSnippets = true,
+            },
+            semanticHighlighting = true,
+        },
+    },
+}
 
 

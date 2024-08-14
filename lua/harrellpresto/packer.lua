@@ -6,30 +6,29 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-  
+
+  use 'mbbill/undotree'
+
   use {
-	'nvim-telescope/telescope.nvim', tag = '0.1.8',
-	-- or                            , branch = '0.1.x',
-	requires = { {'nvim-lua/plenary.nvim'} }
+    'nvim-telescope/telescope.nvim', tag = '0.1.x',
+    requires = { {'nvim-lua/plenary.nvim'}, {'debugloop/telescope-undo.nvim'} }
   }
-  
+
   use "EdenEast/nightfox.nvim"
 
   use {
-	'nvim-treesitter/nvim-treesitter',
-	run = ':TSUpdate'
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
   }
 
   use 'nvim-treesitter/playground'
 
   use "nvim-lua/plenary.nvim" -- don't forget to add this one if you don't have it yet!
   use {
-	"ThePrimeagen/harpoon",
-	branch = "harpoon2",
-	requires = { {"nvim-lua/plenary.nvim"} }
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { {"nvim-lua/plenary.nvim"} }
   }
-  
-  use 'mbbill/undotree'
   
   use 'tpope/vim-fugitive'
 
@@ -41,7 +40,6 @@ return require('packer').startup(function(use)
   use {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
   }
 
   use({
@@ -53,6 +51,17 @@ return require('packer').startup(function(use)
     config = function()
       require("better_escape").setup()
     end,
+  }
+
+  use {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    requires = { 
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    }
   }
 
 end)

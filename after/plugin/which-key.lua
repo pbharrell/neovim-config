@@ -16,21 +16,21 @@ whichKey.setup {
    },
  },
 
- operators = { gc = "Comments" },
+ ops = { gc = "Comments" },
  icons = {
    breadcrumb = ">>",
    separator = "->",
    group = "+",
  },
 
- popup_mappings = {
+key = {
    scroll_down = "<c-d>",
    scroll_up = "<c-u>",
  },
 
- window = {
+ win = {
    border = "single",
-   position = "bottom", 
+   position = "bottom",
    margin = { 1, 0, 1, 0 },
    padding = { 1, 2, 1, 2 },
    winblend = 20,

@@ -1,5 +1,4 @@
 local harpoon = require("harpoon")
-local wk = require("which-key")
 
 -- REQUIRED
 harpoon:setup()
@@ -23,15 +22,11 @@ local function toggle_telescope(harpoon_files)
     }):find()
 end
 
-
 vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end,
-    { desc = "Open harpoon window" })
-
--- vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
-wk.register({
-  -- The key you press
-  { "<leader>a", function() require("harpoon"):list():add() end, desc = "harpoon add" },
-}, { prefix = "<leader>" })
+    { desc = "harpoon window" })
+vim.keymap.set("n", "<leader>e", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
+    { desc = "harpoon quick menu" })
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end, { desc = "harpoon add" } )
 
 vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
 vim.keymap.set("n", "<C-j>", function() harpoon:list():select(2) end)

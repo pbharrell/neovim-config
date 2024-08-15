@@ -18,6 +18,7 @@ require('mason-lspconfig').setup({
     'clangd',
     'pyright',
     'marksman',
+    'lua_ls',
     },
   handlers = {
     function(server_name)
@@ -25,8 +26,6 @@ require('mason-lspconfig').setup({
     end,
   },
 })
-
-root_dir = require('lspconfig.util').root_pattern(".git", "compile_commands.json", ".clangd")
 
 require('lspconfig').clangd.setup{
     -- The default settings for `clangd` in Neovim
